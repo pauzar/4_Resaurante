@@ -1,0 +1,163 @@
+<script>
+//FASE 1 (2 punts)
+//● Creeu una variable int per cada un dels bitllets que existeixen des de 5€ a 500€, haureu de crear un altre
+//variable per guardar el preu total del menjar. (1 punt)
+var mon1 = 1;
+var mon2 = 2;
+var bill5 = 5;
+var bill10 = 10;
+var bill5 = 20;
+var bill5 = 50;
+var bill5 = 100;
+var bill5 = 200;
+var bill5 = 500;
+var PrecioT = 0;
+
+//● Creeu dos arrays, un on guardarem el menú (5 plats) i un altre on guardarem el preu de cada
+//plat. (1 punt)
+ArrayMenu0 = new Array;
+ArrayMenu0.push("Macarrones");
+ArrayMenu0.push("Estofao");
+ArrayMenu0.push("Plato combinao");
+ArrayMenu0.push("Lentejas");
+ArrayMenu0.push("Centollo");
+ArrayPrecio0 = new Array;
+ArrayPrecio0.push(5);
+ArrayPrecio0.push(10);
+ArrayPrecio0.push(15);
+ArrayPrecio0.push(20);
+ArrayPrecio0.push(30);
+
+//FASE 2 (3 punts)
+//● Amb un bucle for haurem d’omplir els dos arrays anteriorment creats. Afegirem el nom del plat i després
+//el preu. (1 punt)
+ArrayMenu = new Array;
+
+ArrayPrecio = new Array;
+console.log("Introduzca los 5 platos del Menu");
+
+for (i=0;i<6;i++)
+{
+var plato = prompt("Introduzca el plato","");
+ArrayMenu.push(plato);
+
+var precio = prompt("Introduzca el precio",);
+ArrayPrecio.push(precio);
+}
+console.log(ArrayMenu);
+console.log(ArrayPrecio);
+
+
+//● Un cop plens els dos arrays haurem de mostrar-los i preguntar que es vol per menjar, guardarem la
+//informació en una List fent servir un bucle while. (1 punt)
+//● Haurem de preguntar si es vol seguir demanant menjar. Podeu fer servir el sistema (1:Si / 0:No), per tant
+//haureu de crear un altre variable int per guardar la informació. (1 punt)
+ 
+var Keepdoing = true; 
+ArrayPedido = new Array;
+var platopedido1 = prompt("Que quiere para comer?","");
+ArrayPedido.push(platopedido1);
+
+while (Keepdoing)
+{
+    var Respuesta = prompt("Quieres algo mas?","");
+    if (Respuesta == "si")
+    {
+    platopedido1 = prompt("Que ser lo que quiera de mas?","");
+    ArrayPedido.push(platopedido1);
+    }
+    else
+    {
+    Keepdoing = false;
+    }
+}
+console.log(ArrayPedido);
+
+//FASE 3 (5 punts)
+//● Un cop hem acabat de demanar el menjar, haurem de comparar la llista amb l’array que hem fet al
+//principi. En el cas que la informació que hem introduït a la List coincideixi amb la del array, haurem de
+//sumar el preu del producte demanat; en el cas contrari haurem de mostrar un missatge que digui que el
+//producte que hem demanat no existeix.
+
+for (i=0; i < ArrayPedido.length; i++)
+{   
+    for (m=0; m < ArrayMenu.length; m++)
+    {  
+        if(ArrayPedido[i] == ArrayMenu[m])
+        {
+        PrecioT = parseInt(ArrayPrecio[m]) + PrecioT;
+        }
+    }
+}
+console.log(PrecioT);
+
+//FASE 4 
+
+ArrayDinero = new Array;
+ArrayDinero = [5,10,20,50,100,200,500,10000];
+ArrayPrecio = new Array;
+var keepdoing = true;
+
+var x = PrecioT;
+
+var i = 0;
+while (keepdoing)
+{
+    if (PrecioT >= 5)
+    {
+        if (PrecioT == ArrayDinero[i])
+        {
+        ArrayPrecio.push(PrecioT);       
+        PrecioT = PrecioT - ArrayDinero[i];
+            if(PrecioT ==0)
+            {
+            keepdoing = false;
+            }
+            else
+            {
+            i=0;
+            }
+        }
+        else
+        {
+            if (PrecioT < ArrayDinero[i])
+            {
+            PrecioT = PrecioT - ArrayDinero[i-1];
+            ArrayPrecio.push(ArrayDinero[i-1]);
+            i=0;            
+            }
+        }   
+    i++ 
+    }
+    else
+    {
+        switch(PrecioT)
+        {
+            case PrecioT = 1:
+            console.log("En cuanto a monedas, pague con 1 moneda de 1€");
+            break;
+            case PrecioT = 2:
+            console.log("En cuanto a monedas, pague con 1 moneda de 2€");
+            break;
+            case PrecioT = 3:
+            console.log("En cuanto a monedas, pague con 1 moneda de 1€ y 1 moneda de 2€");
+            break;
+            case PrecioT = 4:
+            console.log("En cuanto a monedas, pague con 2 monedas de 2€");
+        }
+    keepdoing = false;
+    }
+}   
+
+if (x >= 5)
+{   
+    console.log("En cuanto a los billetes, suleteme un billete de "+ ArrayPrecio[0]+ "€");
+    for (j=1; j < ArrayPrecio.length; j++)
+    {
+    console.log("Y otro de "+ ArrayPrecio[j]+ "€");
+    }
+}
+
+
+
+</script>
